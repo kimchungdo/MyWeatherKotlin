@@ -11,9 +11,9 @@ interface CityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCityData(data: CityData)
 
-    @Query("select * from city_list")
+    @Query("SELECT * FROM city_list")
     fun queryCityData():List<CityData>
 
-    @Query("select * from city_list where id = :id")
-    fun queryCityDataById(id:String)
+    @Query("SELECT * FROM city_list WHERE id = :id")
+    fun queryCityDataById(id:String):CityData
 }
