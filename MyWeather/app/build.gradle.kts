@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
+    id("kotlin-kapt") //add DB
 }
 
 android {
@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation("androidx.room:room-gradle-plugin:2.6.1")
+    implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-common:2.6.1")
-    kapt("androidx.room:room-compiler-processing:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 }
