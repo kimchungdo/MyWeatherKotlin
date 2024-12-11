@@ -7,6 +7,9 @@ import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.myweather.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         when(it.resultCode){
             RESULT_OK -> {
                 val id = it.data?.getStringExtra(SELECT_ID)
+                val data = Data.Builder().putString(SELECT_ID, id).build()
+                val request = OneTimeWorkRequestBuilder<CurrentWeatherWorker>().setInputData(data).build()
+                WorkManager.getInstance(this).enqueue(request)
                 Log.d("CD KIM", "id: $id")
             }
         }

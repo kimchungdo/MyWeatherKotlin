@@ -26,12 +26,12 @@ class SelectCityActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         thread {
-            InputStreamReader(assets.open("areaCode")).use {
-                val city = Gson().fromJson(it, CityList::class.java)
+            InputStreamReader(assets.open("areaCode")).use {input->
+                val city = Gson().fromJson(input, CityList::class.java)
                 runOnUiThread{
                     binding.cityListView.adapter = CityAdapter(city.city){root ->
                         val data = root.findViewById<TextView>(R.id.name).let {
-                            CityData(it.id.toString(), it.text.toString())
+                            CityData(it.tag.toString(), it.text.toString())
                         }
                         saveCityData(data)
                         setResult(RESULT_OK, Intent().putExtra(SELECT_ID, data.id))
