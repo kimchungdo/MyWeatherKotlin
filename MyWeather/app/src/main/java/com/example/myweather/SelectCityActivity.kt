@@ -1,5 +1,6 @@
 package com.example.myweather
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -14,6 +15,7 @@ import com.google.gson.Gson
 import java.io.InputStreamReader
 import kotlin.concurrent.thread
 
+const val SELECT_ID = "select_id"
 class SelectCityActivity : AppCompatActivity() {
     lateinit var binding: ActivitySelectCityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +34,9 @@ class SelectCityActivity : AppCompatActivity() {
                             CityData(it.id.toString(), it.text.toString())
                         }
                         saveCityData(data)
+                        setResult(RESULT_OK, Intent().putExtra(SELECT_ID, data.id))
                         Log.d("CD KIM", "city data: $data")
+                        finish()
                     }
                     binding.cityListView.layoutManager = LinearLayoutManager(this)
                 }

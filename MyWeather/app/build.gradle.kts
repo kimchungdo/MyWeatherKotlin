@@ -50,6 +50,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-common:2.6.1")
