@@ -11,7 +11,7 @@ import java.net.URL
 
 class CurrentWeatherWorker(context: Context, val param: WorkerParameters): Worker(context, param) {
     override fun doWork(): Result {
-        val url = "https://api.openweathermap.org/data/2.5/weather?appid=83639cd84260050d123bb33c199f5b3f&id="
+        val url = KEY
         val id = param.inputData.getString(SELECT_ID)
         val connect = URL(url + id).openConnection()
         BufferedInputStream(connect.getInputStream()).use {
